@@ -97,3 +97,28 @@
  * Running on http://172.29.0.2:5000 (Press CTRL+C to quit)
 2022-03-29 19:35:24,556 INFO werkzeug MainThread :  * Restarting with stat
 2022-03-29 19:35:34,722 INFO werkzeug Thread-3 : 172.29.0.1 - - [29/Mar/2022 19:35:34] "GET / HTTP/1.1" 200 -
+2022-04-01 21:15:47,562 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.2:5000 (Press CTRL+C to quit)
+2022-04-01 21:15:47,564 INFO werkzeug MainThread :  * Restarting with stat
+2022-04-01 21:17:38,858 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.2:5000 (Press CTRL+C to quit)
+2022-04-01 21:17:38,862 INFO werkzeug MainThread :  * Restarting with stat
+2022-04-01 21:18:12,729 INFO werkzeug MainThread :  * Running on all addresses (0.0.0.0)
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.18.0.2:5000 (Press CTRL+C to quit)
+2022-04-01 21:18:12,730 INFO werkzeug MainThread :  * Restarting with stat
+2022-04-01 21:32:28,617 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:28] "GET / HTTP/1.1" 200 -
+2022-04-01 21:32:28,804 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-04-01 21:32:52,324 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:52] "[32mPOST /login HTTP/1.1[0m" 302 -
+2022-04-01 21:32:52,359 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:52] "GET /login HTTP/1.1" 200 -
+2022-04-01 21:32:52,464 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-04-01 21:32:55,302 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:55] "GET /register HTTP/1.1" 200 -
+2022-04-01 21:32:55,380 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:32:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2022-04-01 21:33:08,469 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:33:08] "[32mPOST /register HTTP/1.1[0m" 302 -
+2022-04-01 21:33:08,487 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:33:08] "GET /login HTTP/1.1" 200 -
+2022-04-01 21:33:08,603 INFO werkzeug Thread-3 : 172.18.0.1 - - [01/Apr/2022 21:33:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
