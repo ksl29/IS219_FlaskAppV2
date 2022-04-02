@@ -1,10 +1,10 @@
 # Project Setup
 
-[![Production Workflow](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/prod.yml/badge.svg)](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/prod.yml)
+[![Production Workflow](https://github.com/ksl29/IS219_FlaskAppV2/actions/workflows/prod.yml/badge.svg)](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/prod.yml)
 
 * [Production Deployment](https://ksl29-prod.herokuapp.com/)
 
-[![Development Workflow](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/dev.yml/badge.svg)](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/dev.yml)
+[![Development Workflow](https://github.com/ksl29/IS219_FlaskAppV2/actions/workflows/dev.yml/badge.svg)](https://github.com/ksl29/IS219_FlaskApp/actions/workflows/dev.yml)
 
 * [Developmental Deployment](https://ksl29-dev.herokuapp.com/)
 
