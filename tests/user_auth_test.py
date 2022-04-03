@@ -7,14 +7,15 @@ from app.db import db
 #from app.auth.forms import login_form, register_form, security_form
 #from app.db.models import User
 
-
+def test_bad_password(client):
+    response=client.post()
 
 @pytest.mark.parametrize(
     ("username", "password", "confirm", "message"),
     (
-        ("", "", "", b"Please fill out this field."),
-        ("a", "", "", b"Please enter an email address."),
-        ("a@a", "", "", b"Please fill out this field."),
+        ("", "", "", b"Please fill out this field"),
+        ("a", "", "", b"Please enter an email address"),
+        ("a@a", "", "", b"Please fill out this field"),
         ("a@a", "234567", "", b"Passwords must match"),
         ("test@test", "123456", "123456", b"Already Registered"),
     ),
@@ -49,7 +50,7 @@ def test_successful_login(client,auth):
         assert session["user_id"] == 1
         assert g.user["username"] == "test@test"
 
-def test_successful_registration(client,application):
+def test_successful_registration(client,auth,application):
 
     # test that viewing the page renders without template errors
     assert client.get("/register").status_code == 200
@@ -59,7 +60,7 @@ def test_successful_registration(client,application):
     assert "/login" == response.headers["Location"]
 
     # test that the user was inserted into the database
-    with client():
+    with auth():
         assert (
             db().execute("SELECT * FROM user WHERE username = 'abc@def'").fetchone()
             is not None
