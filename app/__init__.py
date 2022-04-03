@@ -57,6 +57,12 @@ def create_app():
     app.cli.add_command(create_database)
     # Setup Flask-User and specify the User data-model
 
+    
+    #Csrf exception to allow unit testing
+    app.config['WTF_CSRF_ENABLED'] = False 
+    
+ 
+
     return app
 
 
