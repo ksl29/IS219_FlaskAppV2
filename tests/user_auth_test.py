@@ -4,56 +4,34 @@ from flask import session
 from flask import g
 from app.db import db
 
-#from app.auth.forms import login_form, register_form, security_form
-#from app.db.models import User
 
-@pytest.mark.skip
-def test_bad_password(client):
-    response=client.post()
+#==========================
+#Password Confirmation
+#==========================
 
-@pytest.mark.parametrize(
-    ("username", "password", "confirm", "message"),
-    (
-        ("", "", "", b"Please fill out this field"),
-        ("a", "", "", b"Please enter an email address"),
-        ("a@a", "", "", b"Please fill out this field"),
-        ("a@a", "234567", "", b"Passwords must match"),
-        ("test@test", "123456", "123456", b"Already Registered"),
-    ),
-)
-@pytest.mark.skip
-def test_validate_registration(client, username, password,confirm, message):
+def test_password_confirmation(client):
     response = client.post(
-        "/register", data={"username": username, "password": password, "confirm": confirm}
+        "/register", data={"username": "a@a", "password": "234567" , "confirm": ""}
     )
-    assert message in response.data
+    assert b"Passwords must match" in response.data
 
 
-@pytest.mark.parametrize(
-    ("username", "password", "message"),
-    (("a", "test", b"Incorrect username or password"), ("test", "a", b"Incorrect username or password")),
-)
-@pytest.mark.skip
-def test_validate_login(auth, username, password, message):
-    response = auth.login(username, password)
-    assert message in response.data
-@pytest.mark.skip
-def test_successful_login(client,auth):
+#==========================
+#Successful Login
+#==========================
+def test_successful_login(client):
     # test that viewing the page renders without template errors
     assert client.get("/login").status_code == 200
 
     #test that successful login redirects to the login page
-    response = auth.login()
+    response = client.post("/login", data={"email": "test@test", "password": "123456"})
     assert "/dashboard" == response.headers["Location"]
 
-    # login request set the user_id in the session
-    # check that the user is loaded from the session
-    with client:
-        client.get("/")
-        assert session["user_id"] == 1
-        assert g.user["username"] == "test@test"
-@pytest.mark.skip
-def test_successful_registration(client,auth,application):
+
+#==========================
+#Successful Registration
+#========================== 
+def test_successful_registration(client):
 
     # test that viewing the page renders without template errors
     assert client.get("/register").status_code == 200
@@ -62,16 +40,40 @@ def test_successful_registration(client,auth,application):
     response = client.post("/register", data={"email": "abe@def", "password": "abcdef", "confirm": "abcdef"})
     assert "/login" == response.headers["Location"]
 
-    # test that the user was inserted into the database
-    with auth():
-        assert (
-            db().execute("SELECT * FROM user WHERE username = 'abc@def'").fetchone()
-            is not None
-        )
 
 
+#==========================
+#Login Validation
+#==========================
+@pytest.mark.skip
+def test_bad_login(client):
+    response = client.post(
+        "/login", data={"username": "a@a", "password": "234567" }
+    )
+    assert "/login" == response.headers["Location"]
 
+#==========================
+#Dashboard Allowed
+#==========================
+@pytest.mark.skip
 def test_dashboard_access_allowed(client):
-    pass
+
+    # test that viewing the page renders without template errors
+    assert client.get("/register").status_code == 200
+
+    response = client.post("/login", data={"username": "test@test", "password": "123456" })
+    response = client.get("/dashboard")
+    
+    assert response.headers["Location"] == "/dashboard"
+
+#==========================
+#Dashboard Denied
+#==========================
+
 def test_dashboard_access_denied(client):
-    pass
+    response = client.get("/dashboard")
+    assert response.headers["Location"] != "/dashboard"
+    
+
+
+
